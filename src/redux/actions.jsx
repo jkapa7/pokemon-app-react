@@ -21,7 +21,7 @@ export const getAllPokemons = () => {
     //AL HACER UNA PETICION CON AXIOS, ME DEVUELVE LA RESPUESTA
     //CON VARIAS PROPIEDADES, LA INFORMACION QUE SOLICITE
     //ESTA EN LA PROPIEDAD DATA
-    const pokemons = await axios.get("http://localhost:3001/pokemon");
+    const pokemons = await axios.get("/pokemon");
 
     dispatch({ type: GET_USERS, payload: pokemons.data });
   };
@@ -32,7 +32,7 @@ export const getAllPokemons = () => {
 //PARA ESO TENGO UN END POINT QUE ME LLEVA DIRECTO
 export const getTypes = () => {
   return async function (dispatch) {
-    const types = await axios.get("http://localhost:3001/types");
+    const types = await axios.get("/types");
 
     dispatch({ type: GET_TYPES, payload: types.data });
   };
@@ -77,7 +77,7 @@ export const getPokemonByName = (name) => {
   return async (dispatch) => {
     try {
       const pokemon = await axios.get(
-        `http://localhost:3001/pokemon?name=${name}`
+        `/pokemon?name=${name}`
       );
 
       return dispatch({
@@ -101,7 +101,7 @@ export const postPokemon = (payload) => {
   return async () => {
     try {
       const response = await axios.post(
-        `http://localhost:3001/pokemon`,
+        `/pokemon`,
         payload
       );
       return response;
@@ -114,7 +114,7 @@ export const postPokemon = (payload) => {
 export const getPokemonDetail = (id) => {
   return async (dispatch) => {
     try {
-      const pokemon = await axios.get(`http://localhost:3001/pokemon/${id}`);
+      const pokemon = await axios.get(`/pokemon/${id}`);
 
       dispatch({
         type: GET_POKEMON_DETAIL,

@@ -15,9 +15,9 @@ function App() {
 
       <Routes>
         <Route exact path="/" Component={Landing} />
-        <Route exact path="/home" render={() => <Home />} />
+        <Route exact path="/home" Component={Home} />
         <Route exact path="/create" Component={Form} />
-        <Route exact path="/detail/:id" render={() => <Detail />} />
+        <Route exact path="/detail/:id" Component={Detail} />
       </Routes>
     </div>
   );
