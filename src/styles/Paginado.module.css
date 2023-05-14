@@ -1,0 +1,20 @@
+.list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  margin-top: 25px;
+}
+
+.list li {
+  margin: 0 8px;
+}
+
+.list button {
+  padding: 15px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgb(51, 51, 51);
+  color: aliceblue;
+}

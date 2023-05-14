@@ -1,0 +1,12 @@
+* {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: black;
+}
+
+.app {
+  background-color: aliceblue;
+  min-height: 100vh;
+}

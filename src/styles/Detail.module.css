@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  padding-bottom: 50px;
+  background-image: url("../images/db7a52c1e598a50fc52301c77f725da3.jpg");
+}
+
+.card {
+  display: flex;
+  padding: 50px;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  border: 3px solid black;
+  border-radius: 10px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
+  background-color: #eee;
+}
+
+.parrafos {
+  font-size: 22px;
+  text-align: center;
+}
+
+img {
+  display: flex;
+  height: 280px;
+  align-items: center;
+}
