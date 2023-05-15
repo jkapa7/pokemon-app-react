@@ -123,16 +123,6 @@ const Home = () => {
           </select>
         </div>
 
-        <select
-          defaultValue={"default"}
-          onChange={(event) => handleSortSpeed(event)}
-        >
-          <option value="default" disabled>
-            Speed
-          </option>
-          <option value="attack-asc">60</option>
-        </select>
-
         <button
           id={styles.reload}
           onClick={(event) => {

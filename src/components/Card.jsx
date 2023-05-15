@@ -1,7 +1,5 @@
 import React from "react";
 import style from "../styles/Card.module.css";
-
-//IMPORTO LINK PARA PODER NAVEGAR ENTRE LAS RUTAS
 import { Link } from "react-router-dom";
 
 const Card = ({ pokemon }) => {

@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-
 import styles from "../styles/Form.module.css";
 import { useSelector } from "react-redux";
 
-//ME IMPORTO LA ACCION QUE ME TRAE TODOS LOS TYPOS PARA
-//PODERLOS RENDERIZAR, Y LA ACTION DE CREAR UN POKEMON
+
 import { getTypes, postPokemon } from "../redux/actions";
 
-//CREO UNA FUNCION PARA VALIDAR LOS INPUTS, RETORNA EN UN OBJETO LOS ERRORES QUE HAY
-//CREA UNA PROPIEDAD EN EL OBJETO CON EL ERROR, LA FUNCION RETORNA ESE OBJETO
 const validate = (state) => {
   const error = {};
 
@@ -55,7 +51,7 @@ const validate = (state) => {
   return error;
 };
 
-//CREO UN ESTADO LOCAL INICIAL QUE CONECTARE CON MIS INPUTS
+
 const initialState = {
   image: "",
   name: "",
@@ -70,31 +66,18 @@ const initialState = {
 //
 
 const Form = () => {
-  //DISPATCH LO USO PARA DESPACHAR LAS ACTIONES AL REDUCER
   const dispatch = useDispatch();
 
-  //ME SUSCRIBO A LA PROPIEDAD TYPES DEL ESTADO GLOBAL
   const types = useSelector((state) => state.types);
 
-  //CREO MI ESTADO LOCAL PASANDOLE COMO ESTADO INICIAL EL ESTADO
-  //QUE CREE ANTES
   const [form, setForm] = useState(initialState);
 
-  //CREO UN ESTADO LOCAL QUE USARE PARA MOSTRAR LOS ERRORES EN EL FORM
-  //SI HAN SIDO TOCADOS
   const [blur, setBlur] = useState({});
 
-  //ERROR ES UN OBJETO CON LOS ERRORES QUE RETORNA LA FUNCION VALIDATE AL PASARLE
-  //MI FORM QUE ES EL ESTADO LOCAL QUE CREE Y ESTA CONECTADO CON LOS INPUTS
   const errors = validate(form);
 
-  //CREO UNA VARIABLE PARA VALIDAR QUE EL FORMULARIO ESTE CORRECTO
-  //PARA ESTO CREO UNA LOGICA DON LOS ERRORES, SI EL OBJETO ERRORS TIENE ALGUNA
-  //KEY ES PORQUE TIENE UN ERROR. ESTA LOGICA DA TRUE O FALSE
   const formValid = Object.keys(errors).length === 0;
 
-  //CONECTA AL INPUT CON EL ESTADO LOCAL, LO QUE ESCRIBA EN EL INPUT
-  //ESTA REFLEJADO EN EL ESTADO LOCAL
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
@@ -114,42 +97,27 @@ const Form = () => {
     }
   };
 
-  //ESTE ES EL HANDLER DE MI BOTTON SUBMIT, ONCLICK EVALUARA SI EL FORM ES VALIDO
-  //SI LO ES HARA EL DISPATCH DE LA ACTION QUE CREAL EL POKEMON, RECIBIENDO
-  //COMO PAYLOAD EL FORM CON LA INFORMACION QUE PUSE EN LOS INPUTS, YA QUE LOS INPUTS
-  //Y EL ESTADO TIENEN EL MISMO VALOR
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formValid) {
       dispatch(postPokemon(form));
-
-      //UNA VEZ HECHOO EL DISPATCH ALERTAR
       alert("Pokemon created successfully!");
-
-      //YA CREADO EL POKEMON RESETEAR LA INFORMACION DE LOS INPUTS
-      //DEL FORMULARIO
       setForm(initialState);
-
-      //USEHISTORY ME REDIRIGUE A LA RUTA QUE YO LE INDIQUE
-      //EN ESTE CASO A HOME PARA VER EL POKEMON QUE SE CREO
       history.push("/home");
     }
   };
 
-  //ESTE HANDLEE LO CREO PARA EL BUTTON QUE ME QUITA LOS TYPES
-  //QUE SELECCIONE EN TYPES, PARA ESTO DEVUELVE UNA COPIA DEL ESTADO LOCAL
   const handleDeleteType = (elem) => {
     const filterDelete = form.types.filter((type) => type !== elem);
 
-    //seteo el estado input
+
     setForm({
       ...form,
       types: filterDelete,
     });
   };
 
-  //CREO UN HANDLER PARA EL EVENTO ONBLUR QUE
-  //CREA LA PROPIEDAD EN EL ESTADO LOCAL Y LA SETEA COMO TRUE
+
   const handleBlur = (event) => {
     setBlur({
       ...blur,
@@ -157,15 +125,11 @@ const Form = () => {
     });
   };
 
-  //CUANDO SE MONTE EL COMPONENTE QUIERO DESPACHAR LA ACTION
-  //QUE ME TRAE TODOS LOS TYPOS, EN ESTE CASO LO HAGO PARA PODERLOS
-  //MAPEAR Y MOSTRARLOS EN EL SELECT
+
   useEffect(() => {
     dispatch(getTypes());
   }, [dispatch]);
 
-  // EL EVENTO "ONBLUR" SE ACTIVA CUANDO UN ELEMENTO PIERDE
-  //EL ENFOQUE, EL EVENTO SE DISPARA CUANDO SE DEJA DE INTERACTUAR CON EL
   return (
     <div className={styles.container}>
       <form onSubmit={(event) => handleSubmit(event)} className={styles.form}>

@@ -11,8 +11,6 @@ import {
   GET_POKEMON_DETAIL,
 } from "./actions";
 
-//CREO MI ESTADO INICIAL, CON LAS
-//PROPIEDADES QUE VOY A TRABAJAR
 const initialState = {
   pokemons: [],
   types: [],
@@ -20,8 +18,6 @@ const initialState = {
   detail: [],
 };
 
-//EL REDUCER SIEMPRE RECIBE EL ESTADO INICIAL Y LAS ACCIONES, LO
-//IDEAL ES QUE LA LOGICA ESTE EN ESTE COMPONENTE Y NO EN LAS ACTIONS
 const rootReducer = (state = initialState, action) => {
   const pokemonsToOrder = [
     ...(state.allPokemons.length ? state.allPokemons : state.pokemons),
@@ -36,11 +32,6 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case GET_POKEMON_BY_NAME:
-      // const allPokemons1 = state.allPokemons;
-      // const pokemonByName = allPokemons1.filter(
-      //   (pokemon) => pokemon.name === action.payload
-      // );
-
       return {
         ...state,
         pokemons: action.payload,
@@ -51,15 +42,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
       };
 
-    //ESTE CASO ES PARA OBTENER LOS TYPOS DE POKEMONES
     case GET_TYPES:
       return {
         ...state,
         types: action.payload,
       };
 
-    //ME TRAIGO TODOS LOS POKEMONES, ESTAN EN MI ESTADO GLOBAL
-    //Y LOS FILTRO PARA MOSTRARLOS A TODOS,
     case FILTER_BY_TYPE:
       const allPokemons = state.allPokemons;
 

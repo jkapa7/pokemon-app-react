@@ -1,5 +1,4 @@
 import { Route, useLocation, Routes } from "react-router-dom";
-import Info from "../Info";
 import Form from "../views/Form";
 import Landing from "../views/Landing";
 import Detail from "../views/Detail";
