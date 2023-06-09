@@ -11,7 +11,6 @@ export const GET_POKEMON_BY_NAME = "GET_POKEMON_BY_NAME";
 export const POST_POKEMON = "POST_POKEMON";
 export const GET_POKEMON_DETAIL = "GET_POKEMON_DETAIL";
 
-
 export const getAllPokemons = () => {
   return async function (dispatch) {
     const pokemons = await axios.get("/pokemon");
@@ -64,9 +63,7 @@ export const orderByAttack = (payload) => {
 export const getPokemonByName = (name) => {
   return async (dispatch) => {
     try {
-      const pokemon = await axios.get(
-        `/pokemon?name=${name}`
-      );
+      const pokemon = await axios.get(`/pokemon?name=${name}`);
 
       return dispatch({
         type: GET_POKEMON_BY_NAME,
@@ -78,14 +75,10 @@ export const getPokemonByName = (name) => {
   };
 };
 
-
 export const postPokemon = (payload) => {
   return async () => {
     try {
-      const response = await axios.post(
-        `/pokemon`,
-        payload
-      );
+      const response = await axios.post(`/pokemon`, payload);
       return response;
     } catch (error) {
       alert(error);
