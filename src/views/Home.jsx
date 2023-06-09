@@ -65,7 +65,7 @@ const Home = () => {
         </div>
 
         <div className={styles.containerChild}>
-          <h3>Filter by: </h3>
+          <h3 className={styles.ordeandfilter}>Filter by: </h3>
 
           <select
             defaultValue={"default"}
@@ -97,7 +97,7 @@ const Home = () => {
         </div>
 
         <div className={styles.containerChild}>
-          <h3>Order by: </h3>
+          <h3 className={styles.ordeandfilter}>Order by: </h3>
 
           <select
             defaultValue={"default"}
