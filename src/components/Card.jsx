@@ -8,9 +8,6 @@ const Card = ({ pokemon }) => {
       <article className={style.card}>
         <div className={style.txt}>
           <h3>{pokemon.name}</h3>
-          <Link to={`/detail/${pokemon.id}`}>
-            <img alt="pokemon" src={pokemon.image} />
-          </Link>
           <h3>Types: {pokemon.types}</h3>
         </div>
       </article>

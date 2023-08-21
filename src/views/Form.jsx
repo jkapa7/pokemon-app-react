@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import styles from "../styles/Form.module.css";
 import { useSelector } from "react-redux";
 
-
 import { getTypes, postPokemon } from "../redux/actions";
 
 const validate = (state) => {
@@ -50,7 +49,6 @@ const validate = (state) => {
   }
   return error;
 };
-
 
 const initialState = {
   image: "",
@@ -110,13 +108,11 @@ const Form = () => {
   const handleDeleteType = (elem) => {
     const filterDelete = form.types.filter((type) => type !== elem);
 
-
     setForm({
       ...form,
       types: filterDelete,
     });
   };
-
 
   const handleBlur = (event) => {
     setBlur({
@@ -124,7 +120,6 @@ const Form = () => {
       [event.target.name]: true,
     });
   };
-
 
   useEffect(() => {
     dispatch(getTypes());
